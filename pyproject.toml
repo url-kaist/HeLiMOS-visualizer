@@ -1,0 +1,56 @@
+[project]
+name = "helimos_visualizer"
+description = "HeLiMOS LiDAR visualization tools"
+version = "0.0.1"
+readme = "README.md"
+license = {file = "LICENSE"}
+keywords = ["LiDAR", "Robotics", "Visualization"]
+authors = [
+  {name = "Seoyeon Jang", email = "ignaciovizzo@gmail.com"},
+]
+
+classifiers  = [
+  "Operating System :: Unix",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "Programming Language :: C++",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Education",
+  "Intended Audience :: Other Audience",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+]
+
+
+requires-python = ">=3.7"
+dependencies = [
+  "natsort",
+  "numpy",
+  "tqdm",
+  "typer[all]>=0.6.0",
+]
+
+[project.optional-dependencies]
+all = [
+  "pyntcloud",
+  "trimesh",
+  "ouster-sdk",
+]
+
+[project.urls]
+homepage = "https://github.com/OREOCHIZ/helimos-visualizer.git"
+
+[project.scripts]
+helimos_visualizer = "helimos_visualizer.helimos_visualizer:main"
+
+[tool.black]
+line-length = 100
+
+[tool.isort]
+profile = "black"
