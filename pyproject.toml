@@ -45,7 +45,7 @@ all = [
 ]
 
 [project.urls]
-homepage = "https://github.com/OREOCHIZ/helimos-visualizer.git"
+homepage = "https://github.com/url-kaist/HeLiMOS-visualizer"
 
 [project.scripts]
 helimos_visualizer = "helimos_visualizer.helimos_visualizer:main"

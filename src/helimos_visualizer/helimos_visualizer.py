@@ -38,29 +38,29 @@ def version_callback(value: bool):
         raise typer.Exit(0)
 
 
-docstring = f"""
+docstring = """
 :Automobile: HeLiMOS visualizer :person_running:\n
 \b
 [bold green]Examples: [/bold green]
 # Your helimos folder structure is as follows:
 
-$HOME/HeLiMOS/sequence
-├──Deskewed_LiDAR
+$HOME/HeLiMOS/{sequence}
+└── Deskewed_LiDAR
     ├── train.txt
     ├── val.txt
     ├── test.txt
     ├── Aeva
     │   ├── calib.txt
     │   ├── velodyne
-    │   ├── labels
+    │   └── labels
     ├── Avia
     │   ├── calib.txt
     │   ├── velodyne
-    │   ├── labels
+    │   └── labels
     ├── Ouster
     │   ├── calib.txt
     │   ├── velodyne
-    │   ├── labels
+    │   └── labels
     └── Velodyne
         ├── calib.txt
         ├── velodyne
