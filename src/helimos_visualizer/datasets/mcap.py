@@ -26,9 +26,9 @@ import sys
 
 class McapDataloader:
     def __init__(self, data_dir: str, topic: str, *_, **__):
-        """Standalone .mcap dataloader withouth any ROS distribution."""
+        """Standalone .mcap dataloader without any ROS distribution."""
         # First try rosbags
-        from lidar_visualizer.datasets.point_cloud2 import read_point_cloud
+        from helimos_visualizer.datasets.point_cloud2 import read_point_cloud
 
         # Then MCAP support
         try:
@@ -96,7 +96,7 @@ class McapDataloader:
         # when user specified the topic check that exists
         if topic and topic not in point_cloud_topics:
             print(
-                f'[ERROR] Dataset does not containg any msg with the topic name "{topic}". '
+                f'[ERROR] Dataset does not contain any msg with the topic name "{topic}". '
                 "Please select one of the following topics with the --topic flag"
             )
             print_available_topics_and_exit()

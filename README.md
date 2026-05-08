@@ -24,32 +24,30 @@ make install
 ## 💡 Usage
 
 ### 1. Set the symbolic link
-Download the HeLiMOS dataset and create a symbolic link to it at `${HOME}/HeLiMOS`
+Download the HeLiMOS dataset and create a symbolic link to it at `${HOME}/HeLiMOS`:
 ```sh
-sudo ln -s "/path/to/HeLiMOS/{sequence}" "$HOME/HeLiMOS"
-# e.g. sudo ln -s "/path/to/HeLiMOS/KAIST05" "$HOME/HeLiMOS"
+ln -s "/path/to/HeLiMOS" "$HOME/HeLiMOS"
 ```
 
-After that, we expect the following directory:
+After that, we expect the following directory layout:
 ```
-
 ${HOME}/HeLiMOS/{sequence}
-├──Deskewed_LiDAR
+└── Deskewed_LiDAR
     ├── train.txt
     ├── val.txt
     ├── test.txt
     ├── Aeva
     │   ├── calib.txt
     │   ├── velodyne
-    │   ├── labels
+    │   └── labels
     ├── Avia
     │   ├── calib.txt
     │   ├── velodyne
-    │   ├── labels
+    │   └── labels
     ├── Ouster
     │   ├── calib.txt
     │   ├── velodyne
-    │   ├── labels
+    │   └── labels
     └── Velodyne
         ├── calib.txt
         ├── velodyne

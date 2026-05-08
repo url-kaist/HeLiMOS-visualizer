@@ -40,7 +40,7 @@ class Visualizer:
             ) from e
         # Initialize GUI controls
         self.block_vis = True
-        self.play_crun = False
+        self.play_run = False
         self.reset_bounding_box = True
 
         # Create data
@@ -78,7 +78,7 @@ class Visualizer:
         while poll_events:
             self.vis.poll_events()
             self.vis.update_renderer()
-            if self.play_crun:
+            if self.play_run:
                 break
 
     def advance(self):
@@ -94,17 +94,13 @@ class Visualizer:
         self.pbar.set_description_str(self._get_current_filename(self.pbar.n))
         self.pbar.refresh()
 
-    # Private Interaface ---------------------------------------------------------------------------
+    # Private Interface ---------------------------------------------------------------------------
     def _get_current_filename(self, idx):
-        # Try to fetch the current filename
         try:
             filename = self._dataset.scan_files[idx]
             return os.path.splitext(os.path.basename(filename))[0]
         except:
             return None
-
-        # Let's do a bit of duck typing to support eating different monsters
-        dataframe = self._dataset[idx]
 
     def _get_frame(self, idx):
         # Let's do a bit of duck typing to support eating different monsters
@@ -121,12 +117,12 @@ class Visualizer:
         return frame
 
     def _next_frame(self, vis):
-        self.play_crun = False
+        self.play_run = False
         self.advance()
         self.update(False)
 
     def _prev_frame(self, vis):
-        self.play_crun = False
+        self.play_run = False
         self.rewind()
         self.update(False)
 
@@ -185,4 +181,4 @@ class Visualizer:
         os._exit(0)
 
     def _start_stop(self, vis):
-        self.play_crun = not self.play_crun
+        self.play_run = not self.play_run

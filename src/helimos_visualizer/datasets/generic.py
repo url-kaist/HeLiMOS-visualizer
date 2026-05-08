@@ -61,13 +61,12 @@ class GenericDataset:
                 dtype=str,
             )
         elif split == "train" or split == "test":
-            frame_idxes = np.loadtxt(os.path.join(Path(data_dir).parent, "{0}.txt").format(split), dtype=str)
+            frame_idxes = np.loadtxt(
+                os.path.join(Path(data_dir).parent, "{0}.txt").format(split), dtype=str
+            )
             self.scan_files = np.array(
                 natsort.natsorted(
-                    [
-                        os.path.join(self.scans_dir, f"{fn}.bin")
-                        for fn in frame_idxes
-                    ]
+                    [os.path.join(self.scans_dir, f"{fn}.bin") for fn in frame_idxes]
                 ),
                 dtype=str,
             )
@@ -75,16 +74,13 @@ class GenericDataset:
             frame_idxes = np.loadtxt(os.path.join(Path(data_dir).parent, "val.txt"), dtype=str)
             self.scan_files = np.array(
                 natsort.natsorted(
-                    [
-                        os.path.join(self.scans_dir, f"{fn}.bin")
-                        for fn in frame_idxes
-                    ]
+                    [os.path.join(self.scans_dir, f"{fn}.bin") for fn in frame_idxes]
                 ),
                 dtype=str,
             )
         else:
             raise ValueError(f"Split {split} not recognized.")
-                
+
         if len(self.scan_files) == 0:
             raise ValueError(f"Tried to read point cloud files in {self.scans_dir} but none found")
         self.file_extension = self.scan_files[0].split(".")[-1]
@@ -124,7 +120,7 @@ class GenericDataset:
                 labels_dir = os.path.join(Path(file).parents[1], "labels")
                 idx, _ = os.path.splitext(file)
                 label_file = os.path.join(labels_dir, os.path.basename(idx) + ".label")
-                
+
                 # Check if corresponding .label file exists
                 if os.path.isfile(label_file):
                     colors = self.cmap(intensity)[:, :3].reshape(-1, 3)
@@ -133,8 +129,8 @@ class GenericDataset:
                     colors[labels > 250] = [1, 0, 0]
                     # mask = (labels > 250).astype(np.float32).reshape(-1, 1)
                     # colors = np.concatenate([mask, np.zeros((mask.shape[0], 2), dtype=np.float32)], axis=1)
-                
-                else:   # Use intensity if not
+
+                else:  # Use intensity if not
                     colors = self.cmap(intensity)[:, :3].reshape(-1, 3)
 
                 scan.points = self.o3d.utility.Vector3dVector(points)
@@ -193,7 +189,7 @@ class GenericDataset:
         # If reach this point means that none of the librares exist/could read the file
         if not tried_libraries:
             print(
-                "No 3D library is insallted in your system. Install one of the following "
+                "No 3D library is installed in your system. Install one of the following "
                 "to read the pointclouds"
             )
             print("\n".join(missing_libraries))

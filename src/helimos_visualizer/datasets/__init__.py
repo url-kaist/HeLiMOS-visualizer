@@ -77,4 +77,4 @@ def dataset_factory(dataloader: str, data_dir: Path, split: str, *args, **kwargs
     module = importlib.import_module(f".{dataloader}", __name__)
     assert hasattr(module, dataloader_type), f"{dataloader_type} is not defined in {module}"
     dataset = getattr(module, dataloader_type)
-    return dataset(data_dir=data_dir, split = split, *args, **kwargs)
+    return dataset(data_dir=data_dir, split=split, *args, **kwargs)

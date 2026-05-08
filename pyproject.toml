@@ -6,7 +6,7 @@ readme = "README.md"
 license = {file = "LICENSE"}
 keywords = ["LiDAR", "Robotics", "Visualization"]
 authors = [
-  {name = "Seoyeon Jang", email = "ignaciovizzo@gmail.com"},
+  {name = "Seoyeon Jang"},
 ]
 
 classifiers  = [
@@ -30,6 +30,7 @@ classifiers  = [
 
 requires-python = ">=3.7"
 dependencies = [
+  "matplotlib",
   "natsort",
   "numpy",
   "tqdm",

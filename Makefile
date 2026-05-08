@@ -2,7 +2,7 @@ install:
 	@pip install --verbose .
 
 uninstall:
-	@pip -v uninstall lidar_visualizer
+	@pip -v uninstall helimos_visualizer
 
 clean:
 	@git clean -xff .

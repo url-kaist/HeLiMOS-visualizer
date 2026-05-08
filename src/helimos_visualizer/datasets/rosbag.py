@@ -44,7 +44,7 @@ class RosbagDataset:
                 'rosbags library not installed, run "pip install -U rosbags"'
             ) from e
 
-        from lidar_visualizer.datasets.point_cloud2 import read_point_cloud
+        from helimos_visualizer.datasets.point_cloud2 import read_point_cloud
 
         self.read_point_cloud = read_point_cloud
 
@@ -109,7 +109,7 @@ class RosbagDataset:
         # when user specified the topic check that exists
         if topic and topic not in point_cloud_topics:
             print(
-                f'[ERROR] Dataset does not containg any msg with the topic name "{topic}". '
+                f'[ERROR] Dataset does not contain any msg with the topic name "{topic}". '
                 "Please select one of the following topics with the --topic flag"
             )
             print_available_topics_and_exit()
